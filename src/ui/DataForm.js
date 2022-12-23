@@ -32,7 +32,7 @@ export class DataForm {
         this.onChangeDateTo();
         this.onChangeHourFrom();
         this.onChangeHourTo();
-        this.updateHtml();
+        this.outputData();
     }
     addSubmitHandler(processFun) {
         this.#formElement.addEventListener('submit', (event) => {
@@ -92,7 +92,7 @@ export class DataForm {
             }
         })
     }
-    updateHtml() {
+    outputData() {
 
         this.#selectSityElement.innerHTML +=
             this.#cities.map(cur => {
