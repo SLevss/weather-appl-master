@@ -2,13 +2,12 @@ body, html {
     height: 100%;
 }
 body {
-    background-color: rgb(150, 192, 228);
+    background-color: rgb(123, 167, 206);
 }
 .form-title {
     text-align: center;
     font-size: 1.5em;
     font-weight: bold;
-    position: fixed;
 }
 .form-class {
     display: flex;
@@ -16,49 +15,41 @@ body {
     justify-content: center;
     align-items: center;
     flex-grow: 1;
-   
 }
 .two-inputs {
     display: flex;
     justify-content: space-around;
-    width: 60vw;
+    width: 70vw;
     margin-top: 5vh;
-   
     
 }
 .buttons {
     display: flex;
     justify-content: space-around;
     margin-top: 10vh;
-    width: 40vw;
-   
+    width: 70vw;
     
 }
 .error {
     border-color: red;
     color: red;
 }
-
+.weather-list {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    max-height: 70v;
+}
 .buttons-menu {
     display: flex;
     justify-content: center;
-} 
-
-.items-list {
-   
-    flex-direction: row;
-    overflow-y: scroll;
-    max-height: 70v;
-
 }
-.item-class {
-    flex-direction: row;
-    max-width: 50vw;
-    margin-top: 4vh;
-    overflow: hidden;
-}.item-element {
-    display:inline-block;
-    flex-direction: row;
-    background-color: rgb(175, 232, 204);
-    font-weight: bold;
+.weather-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 70vh;
+    list-style: none;
+    overflow-y: scroll;
+    justify-content: space-around;
 }

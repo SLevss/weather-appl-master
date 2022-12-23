@@ -1,17 +1,21 @@
 export class TemperaturesList {
-    #listElement;
-    constructor(idList) {
-        this.#listElement = document.getElementById(idList)
+    #cityElement
+    #listElement
+    constructor(idList, idCity) {
+        this.#cityElement = document.getElementById(idCity);
+        this.#listElement = document.getElementById(idList);
     }
-    showResults(dataArray) {
-        this.#listElement.innerHTML = getRecordList(dataArray)
+    showResult(dataArray) {
+             this.#cityElement.innerHTML = dataArray.city;
+             this.#listElement.innerHTML = getListItems(dataArray.objects)
+              
     }
 }
-
-function getRecordList(dataArr) {
-    return dataArr.map(value => {
-        return ` <div class="details-list">
-            <p>Data: ${value.date} Time: ${value.hour} Temperature: ${value.temperature}</p>
-    </div>`});
+function getListItems(data) {
+    return data.map(d =>
+        `<li class="item-class">
+                 <p class="item-element">Date: ${d.date} </p>
+                 <p class="item-element">Hour: ${d.hour} </p>
+                 <p class="item-element">Temperature: ${d.temperature}</p>
+          </li>`).join('');
 }
-

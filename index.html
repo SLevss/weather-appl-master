@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,22 +8,18 @@
     <title>WeatherAppl</title>
     <link rel="stylesheet" href="styles/form.css">
 </head>
+
 <body>
     <section>
         <header class="form-title">
-            Weather Application
+            Weather
         </header>
-        <form class="form-request" id="form-request">
-            <div>
-                <select name="City" id="city" required>
-                    <option value selected disabled>
+        <form id="data_form" class="form-class">
+            <div class="one-input">
+                <select name="city" required id="select-sity">
+                    <option value hidden selected disabled>
                         --Select City--
                     </option>
-                    <option value="Eilat">Eilat</option>
-                    <option value="Jerusalem">Jerusalem</option>
-                    <option value="Rehovot">Rehovot</option>
-                    <option value="Haifa">Haifa</option>
-                  
                 </select>
             </div>
             <div class="two-inputs">
@@ -30,21 +27,23 @@
                 <input type="date" name="dateTo" id="date_to" min="2022-12-19" max="2023-01-03" required>
             </div>
             <div class="two-inputs">
-                <input type="number" name="timeFrom" placeholder="Enter time from"
-                                min="0" max="23" id="hour_from" required>
-                <input type="number" name="timeTo" placeholder="Enter time to"
-                                min="0" max="23"  id="hour_to" required>
+                <input type="number" name="hourFrom" required id="hour_from" placeholder="enter hour-from">
+                <input type="number" name="hourTo" required id="hour_to" placeholder="enter hour-to">
             </div>
+            <p id="error_message" class="error"></p>
             <div class="buttons">
-                <button type="submit">Submit</button>
+                <button type="get temperature values">Submit</button>
                 <button type="reset">Reset</button>
             </div>
+            <header>
+                <h2 id="city" class="city-title"></h2>
+            </header>
+            <ul id="items-list" class="items-class">
+            </ul>
         </form>
-        <p id="error_msg" class="error"></p>
-        <ul class="weather-list" id="weather-list">
 
-        </ul>
     </section>
     <script src="src/main.js" type="module"></script>
 </body>
+
 </html>
