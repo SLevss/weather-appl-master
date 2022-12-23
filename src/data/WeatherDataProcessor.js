@@ -21,4 +21,12 @@ constructor() {
            // return {city, objects: [{date,hour,temperature},...]}
         })
     }
+    getMinMaxDate() {
+        //TODO
+        return {minISODate:"...", maxISODate:"..."};
+    }
+    getCities() {
+        //TODO
+        return null;
+    }
 }
