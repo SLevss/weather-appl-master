@@ -1,32 +1,35 @@
 export class WeatherDataProcessor {
-#cityGeocodes
-constructor() {
-    this.#cityGeocodes = [{city:"Rehovot", latitude:31.046, longitude:34.851},
-     {city:"Haifa", latitude:31.046, longitude:34.851}, {city: "Jerusalem"},
-     {city: "Eilat",latidude:29.558, longitude:34.948 },
-     {city: "Jerusalem", latidude:31.771, longitude:35.217},
-    {}, {}] 
-    this.#baseUrl = "https://api.open-meteo.com/v1/gfs?";
-    this.#baseParams = "&hourly=temperature_2m&timezone=IST&";
-}
-    getData(requestObject) {
+    #cityGeocodes;
+    #baseUrl;
+    #baseParams;
+    constructor() {
+        this.#cityGeocodes = [
+            { city: "Eilat", latidude: 29.55767, longitude: 34.95193 },
+            { city: "Jerusalem", latidude: 31.76832, longitude: 35.21371 },
+            { city: "Rehovot", latitude: 31.892773, longitude: 34.811272 },
+            { city: "Haifa", latitude: 32.79405, longitude: 34.98957 },
+        ]
+        this.#baseUrl = "https://api.open-meteo.com/v1/gfs?";
+        this.#baseParams = "&hourly=temperature_2m&timezone=IST&";
+    }
+    getData(requestObject, fn) {
         const url = this.getUrl(requestObject);
         const limits = this.getHourLimits(requestObject);
         console.log(limits);
         const promiseResponse = fetch(url);
         this.processData(promiseResponse.then(response => response.json())).then(data => {
             const output = data.filter(e => {
-                const hour = +(e.hour.slice(0,2));
+                const hour = +(e.hour.slice(0, 2));
                 return hour >= limits.hourMin && hour < limits.hourMax;
             })
             fn(output);
         });
     }
-    getData1(requestObject) {  
+    getData1(requestObject) {
         const url = this.getUrl(requestObject);
         const promiseResponse = fetch(url);
         return this.processData(promiseResponse
-                .then(response => response.json()));
+            .then(response => response.json()));
     }
     getUrl(requestObject) {
         const cityRecords = this.#cityGeocodes.filter(record => {
@@ -41,7 +44,7 @@ constructor() {
         return url;
     }
     getHourLimits(requestObject) {
-        return {hourMin: +requestObject.hourFrom, hourMax: +requestObject.hourTo};
+        return { hourMin: +requestObject.hourFrom, hourMax: +requestObject.hourTo };
     }
     processData(promiseData) {
         return promiseData.then(data => {
@@ -53,6 +56,6 @@ constructor() {
                     temperature: data.hourly.temperature_2m[index]
                 }
             });
-        })        
+        })
     }
 }
