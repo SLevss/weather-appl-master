@@ -4,10 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>WeatherAppl</title>
 </head>
 <body>
-    <input type="date" min="2022-12-19" max="2023-01-03">
+    <section>
+        <header class="form-title">
+            Weather Application
+        </header>
+        <form class="form-request" id="form-request">
+            <div>
+                <select name="City" id="city" required>
+                    <option value selected disabled>
+                        --Select City--
+                    </option>
+                    <option value="Rehovot">Rehovot</option>
+                    <option value="Haifa">Haifa</option>
+                    <option value="Eilat">Eilat</option>
+                    <option value="Jerusalem">Jerusalem</option>
+                </select>
+            </div>
+            <div class="two-inputs">
+                <input type="date" name="dateFrom" id="date_from" min="2022-12-19" max="2023-01-03" required>
+                <input type="date" name="dateTo" id="date_to" min="2022-12-19" max="2023-01-03" required>
+            </div>
+            <div class="two-inputs">
+                <input type="number" name="timeFrom" placeholder="Enter time from"
+                                min="0" max="23" id="hour_from" required>
+                <input type="number" name="timeTo" placeholder="Enter time to"
+                                min="0" max="23"  id="hour_to" required>
+            </div>
+            <div class="buttons">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+        <p id="error_msg" class="error"></p>
+        <ul class="weather-list" id="weather-list">
+
+        </ul>
+    </section>
     <script src="src/main.js" type="module"></script>
 </body>
 </html>
