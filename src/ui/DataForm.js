@@ -95,12 +95,13 @@ export class DataForm {
     outputData() {
 
         this.#selectSityElement.innerHTML +=
-            this.#cities.map(cur => {
-                return `<option value="${cur}">${cur}</option>`
+            this.#cities.map(current => {
+                return `<option value="${current}">${current}</option>`
             }).join('');
 
         this.#dateFromElement.min = this.#minDate;
         this.#dateFromElement.max = this.#maxDate;
+        
         this.#dateToElement.min = this.#minDate;
         this.#dateToElement.max = this.#maxDate;
     }
